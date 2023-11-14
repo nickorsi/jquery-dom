@@ -74,28 +74,47 @@
 </div>
 <script src="https://unpkg.com/jquery"></script>
 <script>
-   $("img").attr("class", "image-center");
+  //1
+   $("article img").attr("class", "image-center");
 
-   const $articleParagraphs = $("article.col-sm-8>p");
-
+  //2
+  //  const $articleParagraphs = $("article  p:last-child");
+  // $articleParagraphs.remove();
+   const $articleParagraphs = $("article  p");
    $articleParagraphs[$articleParagraphs.length-1].remove();
 
-  //TODO: Why does the below not work? Is our selector incorrect?
-  //  const $article = $("article.col-sm-8");
-  //  $article.remove(`${$article}:last-child`);
-
+  //3
   const randomPixel = Math.floor(Math.random()*101);
-
   $("#title").css("font-size", `${randomPixel}px`);
 
-  //TODO: Why does making new list element not appear correctly? Shows up as
+  // Why does making new list element not appear correctly? Shows up as
   // Object Object
   // const $newLi = $("<li>");
   // $newLi.text("test");
   // console.log($newLi, $("aside.col-sm-4>ol"));
 
-  $("aside.col-sm-4>ol").append("<li>test</li>");
+  //4
+  $("ol").append("<li>test</li>");
 
+  //5
+  $("aside.col-sm-4").empty().append("<p>Sorry for this list's existence</p>");
+
+  //6
+  const $formInputs = $("input.form-control");
+  // console.log($formInputs.val());
+  console.log($formInputs[0].value);
+  //could delegate the event listener to the parent if wanted to make more input values
+  //Events: keyUp, blur, focus
+  //.eq go to things directly in array with jQuery methods
+  $formInputs.on("change keyup", function() {
+    $("body").css("background-color", `rgb(${$formInputs[0].value}, ${$formInputs[2].value}, ${$formInputs[1].value})`);
+    //background-color: rgb(255,100,60)
+  });
+
+  //7
+  //event.target
+  const $articleImg = $("article.col-sm-8 img");
+  $articleImg.on("click",() => $articleImg.remove());
 </script>
 </body>
 
