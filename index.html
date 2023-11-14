@@ -74,7 +74,28 @@
 </div>
 <script src="https://unpkg.com/jquery"></script>
 <script>
-  // Add your code here!
+   $("img").attr("class", "image-center");
+
+   const $articleParagraphs = $("article.col-sm-8>p");
+
+   $articleParagraphs[$articleParagraphs.length-1].remove();
+
+  //TODO: Why does the below not work? Is our selector incorrect?
+  //  const $article = $("article.col-sm-8");
+  //  $article.remove(`${$article}:last-child`);
+
+  const randomPixel = Math.floor(Math.random()*101);
+
+  $("#title").css("font-size", `${randomPixel}px`);
+
+  //TODO: Why does making new list element not appear correctly? Shows up as
+  // Object Object
+  // const $newLi = $("<li>");
+  // $newLi.text("test");
+  // console.log($newLi, $("aside.col-sm-4>ol"));
+
+  $("aside.col-sm-4>ol").append("<li>test</li>");
+
 </script>
 </body>
 
